@@ -1,7 +1,7 @@
 layout: {zmk_keyboard: zitaotech_keypoint}
 layers:
   QWERTY:
-  - {t: TAB, h: ESC}
+  - TAB
   - Q
   - W
   - E
@@ -12,8 +12,8 @@ layers:
   - I
   - O
   - P
-  - BSPC
-  - CAPS
+  - '-'
+  - RAISE
   - A
   - S
   - D
@@ -27,7 +27,7 @@ layers:
   - L
   - ;
   - ENTER
-  - LSHFT
+  - {t: ESC, h: LSHFT}
   - Z
   - X
   - C
@@ -44,14 +44,14 @@ layers:
   - /
   - RSHFT
   - LCTRL
-  - LGUI
   - LALT
+  - LGUI
   - MUTE
   - RAISE
   - SPACE
   - LOWER
-  - LOWER
-  - SPACE
+  - BSPC
+  - {t: RET, h: LGUI}
   - RAISE
   - MUTE
   - '-'
@@ -105,11 +105,11 @@ layers:
   - '&bootloader'
   - BT CLR
   - {t: ▽, type: trans}
-  - SPACE
+  - {t: ▽, type: trans}
   - {t: LOWER, type: held}
   - LOWER
-  - SPACE
-  - {t: MOUSE, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - OUT TOG
   - '&bootloader'
   - {t: ▽, type: trans}
@@ -127,7 +127,7 @@ layers:
   - F9
   - F10
   - ''
-  - CAPS
+  - {t: CAPS, type: held}
   - LEFT
   - DOWN
   - RIGHT
@@ -158,10 +158,10 @@ layers:
   - ''
   - ''
   - LCTRL
+  - LALT
   - LGUI
   - ''
-  - ''
-  - {t: RAISE, type: held}
+  - RAISE
   - ''
   - ''
   - ''
@@ -183,7 +183,7 @@ layers:
   - I
   - O
   - P
-  - BSPC
+  - {t: ▽, type: trans}
   - CAPS
   - A
   - S
@@ -197,7 +197,7 @@ layers:
   - K
   - L
   - ;
-  - ENTER
+  - {t: ▽, type: trans}
   - LSHFT
   - Z
   - X
@@ -215,11 +215,11 @@ layers:
   - /
   - RSHFT
   - LCTRL
-  - LGUI
   - LALT
+  - LGUI
   - ''
   - RAISE
-  - SPACE
+  - {t: ▽, type: trans}
   - '&mkp MB1'
   - '&mkp MB1'
   - '&tdRMCLK'
