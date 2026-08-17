@@ -153,21 +153,24 @@ static int a320_read_packet(const struct device *dev, int8_t *dx, int8_t *dy) {
     const struct a320_config *cfg = dev->config;
     uint8_t buf[A320_PACKET_LEN] = {0};
     uint8_t reg = 0x82;
-
-    int ret;
+    int ret = 0;
 
     k_mutex_lock(&a320_i2c_mutex, K_FOREVER);
 
-    if (i2c_write_dt(&cfg->i2c, &reg, 1) < 0)
+    ret = i2c_write_dt(&cfg->i2c, &reg, 1);
+    if (ret < 0) {
+        LOG_WRN("A320 i2c_write_dt failed: %d", ret);
         goto out;
+    }
 
-    if (i2c_burst_read_dt(&cfg->i2c, 0x82, buf, sizeof(buf)) < 0)
+    ret = i2c_burst_read_dt(&cfg->i2c, 0x82, buf, sizeof(buf));
+    if (ret < 0) {
+        LOG_WRN("A320 i2c_burst_read_dt failed: %d", ret);
         goto out;
+    }
 
     *dx = (int8_t)buf[1];
     *dy = -(int8_t)buf[2];
-
-    return 0;
 
 out:
     k_mutex_unlock(&a320_i2c_mutex);
@@ -277,6 +280,7 @@ static void a320_work_cb(struct k_work *work) {
         int ret = a320_read_packet(dev, &dx, &dy);
 
         if (ret != 0) {
+            LOG_WRN("A320 read_packet error: %d", ret);
             break;
         }
 
@@ -284,6 +288,8 @@ static void a320_work_cb(struct k_work *work) {
         if (dx == 0 && dy == 0) {
             break;
         }
+
+        LOG_INF("A320 packet dx=%d dy=%d", dx, dy);
 
         total_dx += dx;
         total_dy += dy;
@@ -387,6 +393,7 @@ static void motion_isr(const struct device *port, struct gpio_callback *cb, uint
     struct a320_data *data = CONTAINER_OF(cb, struct a320_data, motion_cb_data);
 
     last_activity_time = k_uptime_get_32();
+    LOG_INF("A320 motion IRQ fired");
 
     k_work_submit_to_queue(&a320_workq, &data->work);
 }
