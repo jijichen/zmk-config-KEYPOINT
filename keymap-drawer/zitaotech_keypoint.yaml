@@ -13,7 +13,7 @@ layers:
   - O
   - P
   - '-'
-  - RAISE
+  - {t: ESC, h: RAISE}
   - A
   - S
   - D
@@ -26,7 +26,7 @@ layers:
   - K
   - L
   - ;
-  - ENTER
+  - {t: '`', h: LOWER}
   - {t: ESC, h: LSHFT}
   - Z
   - X
@@ -50,7 +50,7 @@ layers:
   - RAISE
   - SPACE
   - LOWER
-  - BSPC
+  - {t: BSPC, h: LOWER}
   - {t: RET, h: LGUI}
   - RAISE
   - MUTE
@@ -58,7 +58,7 @@ layers:
   - '='
   - '`'
   LOWER:
-  - ESC
+  - TAB
   - '1'
   - '2'
   - '3'
@@ -83,7 +83,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - ''''
-  - ENTER
+  - {t: ENTER, type: held}
   - LSHFT
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -106,7 +106,7 @@ layers:
   - BT CLR
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: LOWER, type: held}
+  - LOWER
   - LOWER
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -115,7 +115,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   RAISE:
-  - ESC
+  - TAB
   - F1
   - UP
   - F3
@@ -127,7 +127,7 @@ layers:
   - F9
   - F10
   - ''
-  - {t: CAPS, type: held}
+  - {t: ESC, type: held}
   - LEFT
   - DOWN
   - RIGHT
@@ -184,7 +184,7 @@ layers:
   - O
   - P
   - {t: ▽, type: trans}
-  - CAPS
+  - ESC
   - A
   - S
   - D
