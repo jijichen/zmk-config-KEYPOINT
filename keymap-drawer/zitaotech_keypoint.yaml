@@ -50,7 +50,7 @@ layers:
   - RAISE
   - SPACE
   - LOWER
-  - {t: BSPC, h: LOWER}
+  - BSPC
   - {t: RET, h: LGUI}
   - RAISE
   - MUTE
