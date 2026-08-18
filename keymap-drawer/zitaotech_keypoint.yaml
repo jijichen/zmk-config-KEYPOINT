@@ -52,7 +52,7 @@ layers:
   - LOWER
   - BSPC
   - {t: RET, h: LGUI}
-  - RAISE
+  - LOWER
   - MUTE
   - '-'
   - '='
