@@ -47,7 +47,7 @@ layers:
   - LALT
   - LGUI
   - MUTE
-  - RAISE
+  - LALT
   - SPACE
   - LOWER
   - BSPC
